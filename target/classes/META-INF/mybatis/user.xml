@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.blog.dao.UserDAO">
+	
+	<insert id="addUser" parameterType="User">
+		insert into 
+			TB_USER (
+					USER_ID, 
+					USER_PWD, 
+					USER_NAME, 
+					USER_ADDR, 
+					USER_PHONE) 
+		values(#{id},#{pwd},#{name},#{addr},#{phone})
+	</insert>
+	
+	<select id="searchUserById" parameterType="string" resultType="User">
+		select 
+		USER_ID AS	id, 
+		USER_PWD AS	pwd, 
+		USER_NAME AS name,
+		USER_ADDR AS addr, 
+		USER_PHONE AS phone
+		from 
+			tb_user
+		where
+			user_id = #{id}
+	</select>
+	
+</mapper>
